@@ -41,7 +41,6 @@ def auth_passing_process():
     time.sleep(0.01)
     keyboard.send('enter')
 
-    t12 = 12
 
 def get_control(driver, by, value):
     control = None
