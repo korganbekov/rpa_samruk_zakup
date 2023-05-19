@@ -8,8 +8,9 @@ from selenium.webdriver.common.by import By
 config = {
     'webdriver': f'{os.getcwd()}/chromedriver.exe',
     'base_url': 'https://zakup.sk.kz/#/ext',
-    'path_token': f'{os.getcwd()}/token.txt',
-    'path_ecp': f'{os.getcwd()}/GOSTKNCA_1767ac8f3a5598d8c0ff1cec24db76b63f648b6d.p12',
+    'path_token': f'{os.getcwd()}\\token.txt',
+    # 'path_ecp': f'{os.getcwd()}\\GOSTKNCA_1767ac8f3a5598d8c0ff1cec24db76b63f648b6d.p12',
+    'path_ecp': f'c:\\Users\\korga\\Documents\\!!!ЭЦП\\Самрук\\Курылыс-Сапасы\\GOSTKNCA_1767ac8f3a5598d8c0ff1cec24db76b63f648b6d.p12',
     'password_ecp': 'Aa123456', 'password_samruk': '2016Serik'
 }
 
@@ -28,16 +29,21 @@ def auth_passing_process():
     time.sleep(0.05)
     keyboard.release('shift')
     time.sleep(0.05)
-    keyboard.write(config['password_ecp'])
+    # keyboard.write(config['password_ecp'])
+    keyboard.write('Aa123456')
     time.sleep(0.05)
     keyboard.send('enter')
-    time.sleep(0.01)
+
+    time.sleep(0.05)
     keyboard.send('enter')
-    time.sleep(0.01)
-    keyboard.send('enter')
+
+    time.sleep(0.05)
+    # keyboard.send('enter')
 
     control_password_system = get_control(driver, By.XPATH, '//*[@id="password"]')
     control_password_system.send_keys(config['password_samruk'])
+    time.sleep(0.01)
+    keyboard.send('enter')
     time.sleep(0.01)
     keyboard.send('enter')
 
@@ -81,7 +87,7 @@ def get_token(driver):
 
 if __name__ == '__main__':
     driver = webdriver.Chrome(config['webdriver'])
-    # driver.maximize_window()
+    driver.maximize_window()
     driver.get(config['base_url'])
 
     authentication(driver)
